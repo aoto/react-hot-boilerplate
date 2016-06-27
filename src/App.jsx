@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
+import Content from './Content.jsx';
 
-import './App.less';
+import './app.less';
 
 export default class App extends Component {
   componentDidMount() {
-    console.log('finish!');
-    var img = document.createElement('img');
+    console.log('app load finish!');
+    const img = document.createElement('img');
+    /* eslint global-require: 0 */
     img.src = require('./img.jpg');
     document.body.appendChild(img);
   }
 
-  handleClick() {
-    console.log(this);
-  }
-  
   render() {
     return (
-      <h1>Hello: {this.props.name}</h1>
+      <div className="container">
+        <h1>Hello: {this.props.name}</h1>
+        <Content />
+      </div>
     );
   }
 }
+
+App.propTypes = {
+  name: React.PropTypes.string.isRequired
+};
